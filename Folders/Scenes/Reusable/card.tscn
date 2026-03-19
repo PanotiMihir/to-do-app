@@ -1,0 +1,134 @@
+[gd_scene format=3 uid="uid://jiv7y1i5li24"]
+
+[ext_resource type="Script" uid="uid://dbd5n3sr8b6bp" path="res://Folders/Scripts/card.gd" id="1_127in"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_127in"]
+bg_color = Color(0.12712786, 0.12712786, 0.12712777, 1)
+border_width_left = 20
+border_width_top = 20
+border_width_right = 20
+border_width_bottom = 20
+border_color = Color(0.0627451, 0.0627451, 0.0627451, 1)
+border_blend = true
+corner_radius_top_left = 20
+corner_radius_top_right = 20
+corner_radius_bottom_right = 20
+corner_radius_bottom_left = 20
+corner_detail = 20
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_gasbr"]
+bg_color = Color(0.1254902, 0.1254902, 0.1254902, 1)
+border_width_left = 10
+border_width_top = 10
+border_width_right = 10
+border_width_bottom = 10
+border_color = Color(0.0627451, 0.0627451, 0.0627451, 1)
+border_blend = true
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_1j0ah"]
+bg_color = Color(0.06666667, 0.06666667, 0.06666667, 1)
+border_width_left = 10
+border_width_top = 10
+border_width_right = 10
+border_width_bottom = 10
+border_color = Color(0, 0, 0, 1)
+border_blend = true
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_rmklr"]
+bg_color = Color(0.1254902, 0.1254902, 0.1254902, 1)
+border_width_left = 10
+border_width_top = 10
+border_width_right = 10
+border_width_bottom = 10
+border_color = Color(0.0627451, 0.0627451, 0.0627451, 1)
+border_blend = true
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+
+[node name="Card" type="Control" unique_id=976063342]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_127in")
+
+[node name="Panel" type="Panel" parent="." unique_id=1477153957]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -187.0
+offset_top = -204.0
+offset_right = 187.0
+offset_bottom = 204.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_127in")
+
+[node name="MarginContainer" type="MarginContainer" parent="Panel" unique_id=1313239533]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 20
+theme_override_constants/margin_right = 20
+theme_override_constants/margin_bottom = 20
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Panel/MarginContainer" unique_id=727524314]
+layout_mode = 2
+theme_override_constants/separation = 10
+alignment = 1
+
+[node name="Label" type="Label" parent="Panel/MarginContainer/VBoxContainer" unique_id=1994510987]
+layout_mode = 2
+theme_override_font_sizes/font_size = 30
+text = "Task Name"
+
+[node name="Label2" type="Label" parent="Panel/MarginContainer/VBoxContainer" unique_id=1831638060]
+layout_mode = 2
+theme_override_font_sizes/font_size = 30
+text = "Stats To Be Earned:
+Hp: 10
+Xp: 100
+Coins: 10"
+
+[node name="Buttons" type="HBoxContainer" parent="Panel/MarginContainer/VBoxContainer" unique_id=2121860191]
+layout_mode = 2
+theme_override_constants/separation = 30
+alignment = 1
+
+[node name="Completed" type="Button" parent="Panel/MarginContainer/VBoxContainer/Buttons" unique_id=1595126199]
+layout_mode = 2
+theme_override_font_sizes/font_size = 30
+theme_override_styles/normal = SubResource("StyleBoxFlat_gasbr")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_1j0ah")
+theme_override_styles/hover = SubResource("StyleBoxFlat_rmklr")
+text = "Completed"
+
+[node name="Failed" type="Button" parent="Panel/MarginContainer/VBoxContainer/Buttons" unique_id=789162295]
+layout_mode = 2
+theme_override_font_sizes/font_size = 30
+theme_override_styles/normal = SubResource("StyleBoxFlat_gasbr")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_1j0ah")
+theme_override_styles/hover = SubResource("StyleBoxFlat_rmklr")
+text = "Failed"
+
+[connection signal="pressed" from="Panel/MarginContainer/VBoxContainer/Buttons/Completed" to="." method="_on_completed_pressed"]
+[connection signal="pressed" from="Panel/MarginContainer/VBoxContainer/Buttons/Failed" to="." method="_on_failed_pressed"]
