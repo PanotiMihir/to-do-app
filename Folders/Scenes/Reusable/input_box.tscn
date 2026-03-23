@@ -1,0 +1,118 @@
+[gd_scene format=3 uid="uid://ca7w4rb0b50g8"]
+
+[ext_resource type="Script" uid="uid://cr15cxticv65s" path="res://Folders/Scripts/input_box.gd" id="1_8mt6b"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_127in"]
+bg_color = Color(0.12712786, 0.12712786, 0.12712777, 1)
+border_width_left = 20
+border_width_top = 20
+border_width_right = 20
+border_width_bottom = 20
+border_color = Color(0.0627451, 0.0627451, 0.0627451, 1)
+border_blend = true
+corner_radius_top_left = 20
+corner_radius_top_right = 20
+corner_radius_bottom_right = 20
+corner_radius_bottom_left = 20
+corner_detail = 20
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_iuk2x"]
+bg_color = Color(0.1254902, 0.1254902, 0.1254902, 1)
+border_width_left = 10
+border_width_top = 10
+border_width_right = 10
+border_width_bottom = 10
+border_color = Color(0.0627451, 0.0627451, 0.0627451, 1)
+border_blend = true
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_s2c0j"]
+bg_color = Color(0.06666667, 0.06666667, 0.06666667, 1)
+border_width_left = 10
+border_width_top = 10
+border_width_right = 10
+border_width_bottom = 10
+border_color = Color(0, 0, 0, 1)
+border_blend = true
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ylavd"]
+bg_color = Color(0.1254902, 0.1254902, 0.1254902, 1)
+border_width_left = 10
+border_width_top = 10
+border_width_right = 10
+border_width_bottom = 10
+border_color = Color(0.0627451, 0.0627451, 0.0627451, 1)
+border_blend = true
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+
+[node name="InputBox" type="Control" unique_id=98223208]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_8mt6b")
+
+[node name="Panel" type="Panel" parent="." unique_id=2022273485]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -157.0
+offset_top = -96.0
+offset_right = 157.0
+offset_bottom = 96.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_127in")
+
+[node name="MarginContainer" type="MarginContainer" parent="Panel" unique_id=1641271733]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 20
+theme_override_constants/margin_right = 20
+theme_override_constants/margin_bottom = 20
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Panel/MarginContainer" unique_id=1142114260]
+layout_mode = 2
+theme_override_constants/separation = 10
+alignment = 1
+
+[node name="Label" type="Label" parent="Panel/MarginContainer/VBoxContainer" unique_id=810649610]
+layout_mode = 2
+theme_override_font_sizes/font_size = 20
+text = "Label Here"
+
+[node name="LineEdit" type="LineEdit" parent="Panel/MarginContainer/VBoxContainer" unique_id=90040147]
+layout_mode = 2
+placeholder_text = "Place HolderText"
+
+[node name="Submit" type="Button" parent="Panel/MarginContainer/VBoxContainer" unique_id=659959028]
+layout_mode = 2
+theme_override_font_sizes/font_size = 20
+theme_override_styles/normal = SubResource("StyleBoxFlat_iuk2x")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_s2c0j")
+theme_override_styles/hover = SubResource("StyleBoxFlat_ylavd")
+text = "Submit
+"
+
+[connection signal="text_submitted" from="Panel/MarginContainer/VBoxContainer/LineEdit" to="." method="_on_line_edit_text_submitted"]
+[connection signal="pressed" from="Panel/MarginContainer/VBoxContainer/Submit" to="." method="_on_submit_pressed"]

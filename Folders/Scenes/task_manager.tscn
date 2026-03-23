@@ -1,0 +1,93 @@
+[gd_scene format=3 uid="uid://byjb6obv63v6v"]
+
+[ext_resource type="Script" uid="uid://cqcysrai1nc7f" path="res://Folders/Scripts/task_manager.gd" id="1_preww"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ig2nt"]
+bg_color = Color(0.1254902, 0.1254902, 0.1254902, 1)
+border_width_left = 10
+border_width_top = 10
+border_width_right = 10
+border_width_bottom = 10
+border_color = Color(0.0627451, 0.0627451, 0.0627451, 1)
+border_blend = true
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_wmlaj"]
+bg_color = Color(0.06666667, 0.06666667, 0.06666667, 1)
+border_width_left = 10
+border_width_top = 10
+border_width_right = 10
+border_width_bottom = 10
+border_color = Color(0, 0, 0, 1)
+border_blend = true
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_rpu23"]
+bg_color = Color(0.1254902, 0.1254902, 0.1254902, 1)
+border_width_left = 10
+border_width_top = 10
+border_width_right = 10
+border_width_bottom = 10
+border_color = Color(0.0627451, 0.0627451, 0.0627451, 1)
+border_blend = true
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+
+[node name="TaskManager" type="Control" unique_id=314810150]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_preww")
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=533738221]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.1254902, 0.1254902, 0.1254902, 1)
+
+[node name="VBoxContainer" type="VBoxContainer" parent="ColorRect" unique_id=396156835]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Create" type="Button" parent="ColorRect/VBoxContainer" unique_id=1986898933]
+layout_mode = 2
+theme_override_font_sizes/font_size = 30
+theme_override_styles/normal = SubResource("StyleBoxFlat_ig2nt")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_wmlaj")
+theme_override_styles/hover = SubResource("StyleBoxFlat_rpu23")
+text = "Create Task"
+
+[node name="Remove" type="Button" parent="ColorRect/VBoxContainer" unique_id=641786230]
+layout_mode = 2
+theme_override_font_sizes/font_size = 30
+theme_override_styles/normal = SubResource("StyleBoxFlat_ig2nt")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_wmlaj")
+theme_override_styles/hover = SubResource("StyleBoxFlat_rpu23")
+text = "Remove Task"
+
+[connection signal="pressed" from="ColorRect/VBoxContainer/Create" to="." method="_on_create_pressed"]
+[connection signal="pressed" from="ColorRect/VBoxContainer/Remove" to="." method="_on_remove_pressed"]
