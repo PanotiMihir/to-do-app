@@ -3,11 +3,10 @@ extends Control
 @onready var line_edit = $Panel/MarginContainer/VBoxContainer/LineEdit # Load the LineEdit as a var so I dont have to type the exact path a billion times.
 @onready var card_label = $Panel/MarginContainer/VBoxContainer/Label # Same as above for the label node.
 
-signal submitted(text : String) # Creates a signal named submitted with the arg text.
+signal submitted(text) # Creates a signal named submitted with the arg text.
 
 var label : String = "None" # Used to set the label of the input_box so that the user knows what to enter
 var placeholdertext : String = "None" # Used in the LineEdit to add an example which will disappear as soon as the user types something
-
 
 # Sets up the entire scene
 func setup(new_label : String, new_place_holder : String):
@@ -42,3 +41,9 @@ func _on_submit_pressed() -> void:
 # When the user presses enter in the line edit
 func _on_line_edit_text_submitted(_new_text: String) -> void:
 	submit() # Runs the submit func
+
+# To add the functionality to quit without submitting a task
+func _process(_delta: float) -> void:
+	if Input.is_action_just_pressed("Escape"):
+		submitted.emit(null)
+		queue_free()

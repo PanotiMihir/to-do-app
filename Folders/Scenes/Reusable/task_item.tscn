@@ -16,17 +16,7 @@ corner_radius_bottom_right = 20
 corner_radius_bottom_left = 20
 corner_detail = 20
 
-[node name="TaskItem" type="Control" unique_id=1116031363]
-layout_mode = 3
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-script = ExtResource("1_stq1d")
-
-[node name="PanelContainer" type="PanelContainer" parent="." unique_id=1463150814]
-layout_mode = 1
+[node name="TaskItem" type="PanelContainer" unique_id=1764169234]
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
@@ -39,22 +29,27 @@ offset_bottom = 20.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_qb0yt")
+script = ExtResource("1_stq1d")
 
-[node name="MarginContainer" type="MarginContainer" parent="PanelContainer" unique_id=664492298]
+[node name="MarginContainer" type="MarginContainer" parent="." unique_id=1122592415]
 layout_mode = 2
 theme_override_constants/margin_left = 10
 theme_override_constants/margin_top = 10
 theme_override_constants/margin_right = 10
 theme_override_constants/margin_bottom = 10
 
-[node name="HBoxContainer" type="HBoxContainer" parent="PanelContainer/MarginContainer" unique_id=206270052]
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer" unique_id=1555164967]
 layout_mode = 2
-alignment = 1
+theme_override_constants/separation = 10
 
-[node name="Label" type="Label" parent="PanelContainer/MarginContainer/HBoxContainer" unique_id=2131818979]
+[node name="Label" type="Label" parent="MarginContainer/HBoxContainer" unique_id=1124701143]
 layout_mode = 2
 text = "Task_Name"
 
-[node name="CheckBox" type="CheckBox" parent="PanelContainer/MarginContainer/HBoxContainer" unique_id=311896932]
+[node name="HSeparator" type="HSeparator" parent="MarginContainer/HBoxContainer" unique_id=686931035]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="CheckBox" type="CheckBox" parent="MarginContainer/HBoxContainer" unique_id=340176798]
 layout_mode = 2
 text = "Completed"

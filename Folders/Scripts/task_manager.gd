@@ -4,15 +4,17 @@ extends Control
 var input_box_preload = preload("res://Folders/Scenes/Reusable/input_box.tscn")
 
 var tasks : Array = [] # The default task array
-const save_file = "tasks" # The name of the save file
 
 func _ready() -> void:
-	tasks = SaveManager.load_data(save_file, tasks)
+	tasks = SaveManager.load_data(Global.tasks_filename ,tasks)
 	# Loads the data in the save location in the tasks list and keeps the list empty if there is no save file.
-	print(tasks) # prints the task list so that I can view the tasks and see if the savng system is working before I setup the display system.
-	for task in tasks:
-		var data = task["task_name"] + " " + str(task["completed"])
-		print(data)
+	print_tasks() # Prints the tasks so i can see the list of the task at the beggining of the project
+
+func print_tasks():
+	print("\n==== Tasks ====")
+	for task in tasks: # Prints task properly so it's easier for me to analyse them
+		var data = "Task Name: '" + task["task_name"] + "' Completed: " + str(task["completed"]) # Crestes the line to be printed
+		print(data) # Prints the line
 
 func get_task_details():
 	var input_box = input_box_preload.instantiate()
@@ -34,11 +36,16 @@ func get_task_details():
 func _on_create_pressed() -> void:
 	var task_name = await get_task_details() # Gets the name of the task from the user.
 
+	if task_name == null: # Ensures that if the user pressed escape, nothing happens
+		return
+
 	var task = {"task_name" : task_name, "completed" : false} # Creates the mini-dict to be added to the main task list.
 
 	tasks.append(task) # Adds the mini-dict to the main task list.
 
-	SaveManager.save_data(save_file, tasks) # Saves the list.
+	SaveManager.save_data(Global.tasks_filename, tasks) # Saves the list.
+	
+	print_tasks() # Prints the task so that I can see the updated list
 
 func _on_remove_pressed() -> void:
 	pass # Replace with function body.

@@ -1,0 +1,41 @@
+[gd_scene format=3 uid="uid://vspq7aqqoraj"]
+
+[ext_resource type="Script" uid="uid://tegcgrssa1ak" path="res://Folders/Scripts/task_display.gd" id="1_alk8i"]
+
+[node name="TaskDisplay" type="Control" unique_id=974335447]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_alk8i")
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=674163759]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.1882353, 0.1882353, 0.1882353, 1)
+
+[node name="MarginContainer" type="MarginContainer" parent="." unique_id=1247191281]
+layout_mode = 1
+anchors_preset = -1
+anchor_top = 0.1
+anchor_right = 1.0
+anchor_bottom = 1.0
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 20
+theme_override_constants/margin_right = 20
+theme_override_constants/margin_bottom = 20
+
+[node name="ScrollContainer" type="ScrollContainer" parent="MarginContainer" unique_id=1440219614]
+layout_mode = 2
+
+[node name="TaskList" type="VBoxContainer" parent="MarginContainer/ScrollContainer" unique_id=472456644]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_constants/separation = 10
